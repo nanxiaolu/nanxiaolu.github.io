@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Site</title>
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* 字体设置：默认英文字体为 Consolas，中文局部使用楷体 */
+    body {
+      font-family: Consolas, "Courier New", monospace;
+      background: #0f111a;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+    /* 针对带有语言属性为 zh-Hans 的元素及其后代，使用楷体 */
+    :lang(zh-Hans) {
+      font-family: "KaiTi", "楷体", STKaiti, SimKai, serif;
+    }
+
+    a { color: #fff; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Typewriter effect */
+    .typewriter h1 {
+      font-size: 2.2rem;
+      overflow: hidden;
+      border-right: .15em solid #fff;
+      white-space: nowrap;
+      width: 18ch;
+      animation:
+        typing 2s steps(50, end) forwards,
+        blink .75s step-end 2 forwards;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 18ch; }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #fff; }
+    }
+    @keyframes cursorGone {
+      to { border-right-color: transparent; }
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      padding: 40px 60px;
+      gap: 40px;
+    }
+    .hero .hero-image {
+      flex: 1;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .hero .hero-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .hero .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    /* Hide default h1 style, now handled by typewriter */
+    .hero h1 { margin: 0; }
+    .hero h2 { font-size: 1.25rem; color: #9ca3af; }
+    .hero p { max-width: 100%; }
+
+    /* Carousel Section */
+    .carousel-container {
+      overflow: hidden;
+      width: calc(5 * 200px + 4 * 16px); /* show 5 images */
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 16px;
+      animation: scroll 10s linear infinite;
+    }
+    .carousel-track img {
+      width: 200px;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 12px;
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(calc(-1 * (200px + 16px) * 12)); }
+    }
+
+    /* Recently Section */
+    .recently {
+      padding: 60px 40px;
+    }
+    .recently-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .recently-header h2 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    .recently-header .line {
+      flex: 1;
+      height: 1px;
+      background: #4b5563; /* 浅灰色 */
+      margin-left: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      position: relative;
+      background:#1f2937;
+      border-radius:12px;
+      overflow:hidden;
+      display:flex; flex-direction:column;
+      padding-bottom:40px; /* space for date */
+    }
+    .card img { width: 100%; height: auto; }
+    .card-content {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      display: inline-block;
+      background: #2563eb;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #fff;
+    }   
+    .card-content h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    .card-content p {
+      flex: 1;
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+    .date {
+      position: absolute;
+      bottom:16px;
+      left:16px;
+      font-size:0.75rem;
+      color:#9ca3af;
+    }
+
+    /* Utilities */
+    .container { max-width: 1200px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+      <div class="hero-image">
+        <img src="/img/hero.jpg" alt="Hero image">
+      </div>
+      <div class="hero-content">
+        <div class="avatar">
+          <img src="/img/avatar.jpg" alt="Avatar">
+        </div>
+        <div class="typewriter">
+          <h1>I'm Xiaoyong Chen</h1>
+        </div>
+        <h2 lang="zh-Hans">陈潇泳 / 深圳大学 / 大四在读本科生</h2>
+        <p lang="zh-Hans">欢迎来到我的个人网站。我是一名大四本科生。<br />
+            喜欢运动，尤其是心心念念的毽球，给我的生命增添了光鲜亮丽，很庆幸有自己喜欢的事情。在这里我将分享我的生活，博客，论文。</p>
+      </div>
+    </section>
+
+    <!-- Image Carousel Section -->
+    <section class="carousel-container">
+      <div class="carousel-track">
+        <!-- Original 8 images -->
+        <img src="/img/Slide/Slide 12.jpg" alt="Slide 12">
+        <img src="/img/Slide/Slide 11.jpg" alt="Slide 11">
+        <img src="/img/Slide/Slide 10.jpg" alt="Slide 10">
+        <img src="/img/Slide/Slide 9.jpg" alt="Slide 9">
+        <img src="/img/Slide/Slide 8.jpg" alt="Slide 8">
+        <img src="/img/Slide/Slide 7.jpg" alt="Slide 7">
+        <img src="/img/Slide/Slide 6.jpg" alt="Slide 6">
+        <img src="/img/Slide/Slide 5.jpg" alt="Slide 5">
+        <img src="/img/Slide/Slide 4.jpg" alt="Slide 4">
+        <img src="/img/Slide/Slide 3.jpg" alt="Slide 3">
+        <img src="/img/Slide/Slide 2.jpg" alt="Slide 2">
+        <img src="/img/Slide/Slide 1.jpg" alt="Slide 1">
+        <!-- Duplicate for seamless loop -->
+        <img src="/img/Slide/Slide 12.jpg" alt="Slide 12">
+        <img src="/img/Slide/Slide 11.jpg" alt="Slide 11">
+        <img src="/img/Slide/Slide 10.jpg" alt="Slide 10">
+        <img src="/img/Slide/Slide 9.jpg" alt="Slide 9">
+        <img src="/img/Slide/Slide 8.jpg" alt="Slide 8">
+        <img src="/img/Slide/Slide 7.jpg" alt="Slide 7">
+        <img src="/img/Slide/Slide 6.jpg" alt="Slide 6">
+        <img src="/img/Slide/Slide 5.jpg" alt="Slide 5">
+        <img src="/img/Slide/Slide 4.jpg" alt="Slide 4">
+        <img src="/img/Slide/Slide 3.jpg" alt="Slide 3">
+        <img src="/img/Slide/Slide 2.jpg" alt="Slide 2">
+        <img src="/img/Slide/Slide 1.jpg" alt="Slide 1">
+      </div>
+    </section>
+
+    <!-- Recently Section -->
+    <section class="recently">
+      <div class="recently-header">
+            <h2>Recently</h2>
+            <div class="line"></div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="img/recently/paper_cvpr2025_block_drop.png" alt="Post cover">
+          <div class="card-content">
+            <div class="tags">
+                <span class="tag">Paper</span>
+                <span class="tag">CVPR 2025</span>
+                <span class="tag" lang="zh-Hans">模型加速</span>
+            </div>
+            <h3><a href="https://arxiv.org/abs/2503.16916">Temporal Action Detection Model Compression by Progressive Block Drop</a></h3>
+            <!-- <p lang="zh-Hans">关于视频理解模型压缩加速</p> -->
+          </div>
+          <div class="date">2025-04-28</div>
+        </div>
+        <div class="card">
+            <img src="/img/recently/blog_lqb.png" alt="Post cover">
+            <div class="card-content">
+              <div class="tags">
+                  <span class="tag">Blog</span>
+                  <span class="tag" lang="zh-Hans">蓝桥杯大赛</span>
+              </div>
+              <h3 lang="zh-Hans"><a href="https://blog.csdn.net/m0_62709769/article/details/147433115#:~:text=%E8%93%9D%E6%A1%A5%E6%9D%AFPython%E7%BB%84%E5%BF%85%E5%A4%87%E4%BB%A3%E7%A0%81%E5%88%A9%E5%99%A8%EF%BC%8812%E4%B8%AA%E5%A5%BD%E7%94%A8%E5%87%BD%E6%95%B0%2B%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%88%86%E4%BA%AB%EF%BC%89%201%201.%20%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%20%E9%A6%96%E5%85%88%EF%BC%8C%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E6%98%AF%EF%BC%8C%E4%B8%8D%E7%AE%A1%E8%BD%AC%E5%8C%96%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%9B%E5%88%B6%EF%BC%8C%20%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8D%81%E8%BF%9B%E5%88%B6%E4%BD%9C%E4%B8%BA%E4%B8%AD%E4%BB%8B%EF%BC%8C%E4%BB%A5%E4%B8%8B%E6%89%80%E6%9C%89%E5%87%BD%E6%95%B0%E9%83%BD%E6%98%AF%E8%BE%93%E5%85%A5%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0%E3%80%82%20...%202,7.%20%E7%B3%BB%E7%BB%9F%E5%BA%93%E8%87%AA%E5%B8%A6%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%20...%208%208.%20%E7%B3%BB%E7%BB%9F%E5%BA%93%E8%87%AA%E5%B8%A6%E9%98%9F%E5%88%97%20...%20%E6%9B%B4%E5%A4%9A%E9%A1%B9%E7%9B%AE">
+                  蓝桥杯Python组必备代码利器</a></h3>
+              <p lang="zh-Hans">12个好用函数+数据结构分享</p>
+            </div>
+            <div class="date">2025-04-22</div>
+        </div>
+        <div class="card">
+          <img src="/img/recently/paper_cvpr2024_temporal_robustness.png" alt="Post cover">
+          <div class="card-content">
+            <div class="tags">
+                <span class="tag">Paper</span>
+                <span class="tag">CVPR 2024</span>
+                <span class="tag" lang="zh-Hans">模型鲁棒性</span>
+            </div>
+            <h3><a href="https://openaccess.thecvf.com/content/CVPR2024/html/Zeng_Benchmarking_the_Robustness_of_Temporal_Action_Detection_Models_Against_Temporal_CVPR_2024_paper.html">Benchmarking the Robustness of Temporal Action Detection Models Against Temporal Corruptions</a></h3>
+            <!-- <p>Linux has evolved from a student’s project into a cornerstone of modern technology。</p> -->
+          </div>
+          <div class="date">2024-06-20</div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</body>
+</html>
