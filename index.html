@@ -285,14 +285,10 @@
       </div>
     </section>
   </div>
-  <div>访问次数：<span id="visits"></span></div>
-
-  <script>
-    fetch('https://api.countapi.xyz/update/nanxiaolu.github.io/visitor/?amount=1')
-      .then(res => res.json())
-      .then(res => {
-        document.getElementById('visits').innerText = res.value;
-      });
-  </script>
+  <div>unique访问人数：
+    <a href="https://www.easycounter.com/">
+    <img src="https://www.easycounter.com/counter.php?nanxiaolu"
+    border="0" alt="Website Hit Counter"></a>
+  </div>
 </body>
 </html>
