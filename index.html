@@ -285,5 +285,14 @@
       </div>
     </section>
   </div>
+  <div>访问次数：<span id="visits"></span></div>
+
+  <script>
+    fetch('https://api.countapi.xyz/update/nanxiaolu.github.io/visitor/?amount=1')
+      .then(res => res.json())
+      .then(res => {
+        document.getElementById('visits').innerText = res.value;
+      });
+  </script>
 </body>
 </html>
